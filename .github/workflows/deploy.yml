@@ -6,39 +6,44 @@ on:
     branches: [ master ]
 
 env:
-  VERSION: "0.1"
+  version: "0.1.${{github.run_number}}-alpha"  
 
-# https://github.com/marketplace/actions/publish-nuget
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-
   build:   
-    name: build, pack & publich
-    runs-on: ububtu-latest
+    name: "build, pack & publish"
+    runs-on: ubuntu-latest
     steps:   
-    
-      - name: Version
-        run: echo "Version: $VERSION ${{ github.run_number }}"
+      - uses: actions/checkout@v2
+      
+      #- name: Version
+        #env:  
+        #  Final_Version: $version.${{github.run_number}}
+        #run: echo "Version $version"
 
-      - name: create version
-        run: echo "Version: 0.1"
-
-      - name: Setup dotnet
+      - name: Setup dotnet 3.1
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.200
-      
-      - name: Publish 
-        id: publich
-        uses: rohith/publish-nuget@v2.5.0
-        with:
-          PROJECT_FILE_PATH: MongoDB/MongoDB.csproj
-          PACKAGE_NAME: Alex75.Common.MongoDB
-          # VERSION_REGEX: <Version>(.*)<\/Version>
-          VERSION_STATIC: 0.1.0-alpha
-          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          # NUGET_SOURCE: https://api.nuget.org
+
+      - name: MongoDB
+        run: |
+          dotnet build MongoDB/MongoDB.csproj --configuration Release
+          #dotnet test $solution_file --configuration Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY & TestCategory!=REQUIRES_API_KEY & TestCategory!=AFFECTS_BALANCE"
+          dotnet pack MongoDB/MongoDB.csproj --configuration Release --no-build -p:PackageVersion=$version
+          dotnet nuget push MongoDB/bin/Release/*.nupkg  --api-key "${{secrets.NUGET_API_KEY}}" --source https://api.nuget.org/v3/index.json
+
+
+      # https://github.com/marketplace/actions/publish-nuget
+      #- name: Publish 
+      #  id: publich
+      #  uses: rohith/publish-nuget@v2.5.0
+      #  with:
+      #    PROJECT_FILE_PATH: MongoDB/MongoDB.csproj
+      #    PACKAGE_NAME: Alex75.Common.MongoDB
+      #    # VERSION_REGEX: <Version>(.*)<\/Version>
+      #    VERSION_STATIC: 0.1.0-alpha
+      #    NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      #    # NUGET_SOURCE: https://api.nuget.org
 
 
 

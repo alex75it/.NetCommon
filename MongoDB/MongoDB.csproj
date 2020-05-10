@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Alex75.Common.MongoDB</RootNamespace>
+    <Authors>Alessandro Piccione</Authors>
+    <PackageId>Alex75.Common.MongoDB</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
