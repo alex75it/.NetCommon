@@ -22,7 +22,7 @@ jobs:
         run: echo "Version ${{VERSION}} ${{github.run_number}}"
 
       - name: create version
-        run: echo "Version ${{env.VERSION}}"
+        run: echo "Version ${{VERSION}}"
 
       - name: Setup dotnet
         uses: actions/setup-dotnet@v1
