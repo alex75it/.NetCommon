@@ -32,37 +32,3 @@ jobs:
           #dotnet test $solution_file --configuration Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY & TestCategory!=REQUIRES_API_KEY & TestCategory!=AFFECTS_BALANCE"
           dotnet pack MongoDB/MongoDB.csproj --configuration Release --no-build -p:PackageVersion=$version
           dotnet nuget push MongoDB/bin/Release/*.nupkg  --api-key "${{secrets.NUGET_API_KEY}}" --source https://api.nuget.org/v3/index.json
-
-
-      # https://github.com/marketplace/actions/publish-nuget
-      #- name: Publish 
-      #  id: publich
-      #  uses: rohith/publish-nuget@v2.5.0
-      #  with:
-      #    PROJECT_FILE_PATH: MongoDB/MongoDB.csproj
-      #    PACKAGE_NAME: Alex75.Common.MongoDB
-      #    # VERSION_REGEX: <Version>(.*)<\/Version>
-      #    VERSION_STATIC: 0.1.0-alpha
-      #    NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-      #    # NUGET_SOURCE: https://api.nuget.org
-
-
-
-    # The type of runner that the job will run on
-    #runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    #steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    #- uses: actions/checkout@v2
-
-    # Runs a single command using the runners shell
-    #- name: Run a one-line script
-    #  run: echo Hello, world!
-
-    # Runs a set of commands using the runners shell
-    #- name: Run a multi-line script
-    #  run: |
-    #    echo Add other actions to build,
-    #    echo test, and deploy your project.
-
