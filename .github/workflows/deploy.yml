@@ -14,31 +14,31 @@ env:
 jobs:
 
   build:   
-    name: build, pack & publich
+    name: "build, pack & publich"
     runs-on: ububtu-latest
     steps:   
     
       - name: Version
-        run: echo "Version= $VERSION ${{ github.run_number }}"
+        run: echo "Version $VERSION ${{github.run_number}}"
 
       - name: create version
-        run: echo "Version= 0.1"
+        run: echo "Version 0.1"
 
       - name: Setup dotnet
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.200
       
-      - name: Publish 
-        id: publich
-        uses: rohith/publish-nuget@v2.5.0
-        with:
-          PROJECT_FILE_PATH: MongoDB/MongoDB.csproj
-          PACKAGE_NAME: Alex75.Common.MongoDB
-          # VERSION_REGEX: <Version>(.*)<\/Version>
-          VERSION_STATIC: 0.1.0-alpha
-          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          # NUGET_SOURCE: https://api.nuget.org
+      #- name: Publish 
+      #  id: publich
+      #  uses: rohith/publish-nuget@v2.5.0
+      #  with:
+      #    PROJECT_FILE_PATH: MongoDB/MongoDB.csproj
+      #    PACKAGE_NAME: Alex75.Common.MongoDB
+      #    # VERSION_REGEX: <Version>(.*)<\/Version>
+      #    VERSION_STATIC: 0.1.0-alpha
+      #    NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      #    # NUGET_SOURCE: https://api.nuget.org
 
 
 
