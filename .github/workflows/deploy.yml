@@ -5,15 +5,22 @@ on:
   push:
     branches: [ master ]
 
+env:
+  VERSION: "0.1"
+
 # https://github.com/marketplace/actions/publish-nuget
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  publish:
+
+  build:   
     name: build, pack & publich
     runs-on: ububtu-latest
     steps:   
     
+      - name: Version
+        run: echo "Version: $VERSION ${{ github.run_number }}"
+
       - name: create version
         run: echo "Version: 0.1"
 
