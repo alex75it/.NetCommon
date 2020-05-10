@@ -31,7 +31,7 @@ jobs:
           dotnet build MongoDB/MongoDB.csproj --configuration Release
           #dotnet test $solution_file --configuration Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY & TestCategory!=REQUIRES_API_KEY & TestCategory!=AFFECTS_BALANCE"
           dotnet pack MongoDB/MongoDB.csproj --configuration Release --no-build -p:PackageVersion=$version
-          dotnet nuget push MongoDB/bin/Release/*.nupkg  --api-key "${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+          dotnet nuget push MongoDB/bin/Release/*.nupkg  --api-key "${{secrets.NUGET_API_KEY}}" --source https://api.nuget.org/v3/index.json
 
 
       # https://github.com/marketplace/actions/publish-nuget
