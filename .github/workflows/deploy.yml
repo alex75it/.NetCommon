@@ -32,6 +32,7 @@ jobs:
 
       - name: MongoDB
         run: |
+          ls .
           dotnet build MongoDB/MongodB.csproj --configuration Release
       
       #- name: Publish 
