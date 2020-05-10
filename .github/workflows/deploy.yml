@@ -6,7 +6,8 @@ on:
     branches: [ master ]
 
 env:
-  VERSION: "0.1"
+  version: "0.1.${{github.run_number}}"
+  solution_file: "Alex75.CexioApiClient.sln"
 
 # https://github.com/marketplace/actions/publish-nuget
 
@@ -19,15 +20,22 @@ jobs:
     steps:   
     
       - name: Version
-        run: echo "Version ${{VERSION}} ${{github.run_number}}"
+        env:  
+          Final_Version: $version.${{github.run_number}}
+        run: echo "Version $version"
+
 
       - name: create version
-        run: echo "Version ${{VERSION}}"
+        run: echo "Version 0.1"
 
       - name: Setup dotnet
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.200
+
+      - name: MongoDB
+        run: |
+          dotnet build MongoDB/MongodB.csproj --configuration Release
       
       #- name: Publish 
       #  id: publich
