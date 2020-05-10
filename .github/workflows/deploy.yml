@@ -6,12 +6,8 @@ on:
     branches: [ master ]
 
 env:
-  version: "0.1.${{github.run_number}}-alpha"
-  solution_file: "Alex75.CexioApiClient.sln"
+  version: "0.1.${{github.run_number}}-alpha"  
 
-# https://github.com/marketplace/actions/publish-nuget
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
   build:   
@@ -32,9 +28,13 @@ jobs:
 
       - name: MongoDB
         run: |
-          echo ls MongoDB
           dotnet build MongoDB/MongoDB.csproj --configuration Release
-      
+          #dotnet test $solution_file --configuration Release --no-build --filter "TestCategory!=SKIP_ON_DEPLOY & TestCategory!=REQUIRES_API_KEY & TestCategory!=AFFECTS_BALANCE"
+          dotnet pack MongoDB/MongoDB.csproj --configuration Release --no-build -p:PackageVersion=$version
+          dotnet nuget push MongoDB/bin/Release/*.nupkg  --api-key "${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+
+
+      # https://github.com/marketplace/actions/publish-nuget
       #- name: Publish 
       #  id: publich
       #  uses: rohith/publish-nuget@v2.5.0
