@@ -15,7 +15,7 @@ jobs:
 
   build:   
     name: "build, pack & publich"
-    runs-on: ububtu-latest
+    runs-on: ubuntu-latest
     steps:   
     
       - name: Version
