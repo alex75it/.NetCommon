@@ -19,7 +19,7 @@ jobs:
     steps:   
     
       - name: Version
-        run: echo "Version $VERSION ${{github.run_number}}"
+        run: echo "Version ${VERSION} ${{github.run_number}}"
 
       - name: create version
         run: echo "Version 0.1"
