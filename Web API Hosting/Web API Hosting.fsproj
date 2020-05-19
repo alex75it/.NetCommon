@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Alex75.Common.WebApiHosting</AssemblyName>
+    <RootNamespace>WebApi</RootNamespace>
+    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="PingController.fs" />
+    <Compile Include="Startup.fs" />
+    <Compile Include="HostCreator.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="4.7.1" />
+  </ItemGroup>
+
+</Project>
