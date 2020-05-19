@@ -5,7 +5,8 @@
     <AssemblyName>Alex75.Common.WebApiHosting</AssemblyName>
     <RootNamespace>WebApi</RootNamespace>
     <IsPackable>True</IsPackable>
-    <PackageId>Alex75.Common.WebApiHosting</PackageId>
+    <PackageId>Alex75.Common.WebApiHosting</PackageId>    
+    <OutputType>Library</OutputType>
     <Authors>Alessandro Piccione</Authors>
     
   </PropertyGroup>
