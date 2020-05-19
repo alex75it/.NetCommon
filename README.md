@@ -10,3 +10,6 @@ Common utilities for .NET Core projects.
 
 Utility to manage MongoDB collections.
 
+## Alex75.Common.WebApiHosting package
+
+Allows you to easily add a self hosted web service and API controllers to a service.  
