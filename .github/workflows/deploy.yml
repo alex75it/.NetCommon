@@ -35,4 +35,6 @@ jobs:
 
       - name: Web API Hosting
         run: |
-          dotnet build "Web API Hosting/Web API Hosting.csproj --configuration Release
+          dotnet build "Web API Hosting/Web API Hosting.fsproj" --configuration Release
+          dotnet pack "Web API Hosting/Web API Hosting.fsproj" --configuration Release --no-build -p:PackageVersion=$version
+          dotnet nuget push "Web API Hosting/bin/Release/*.nupkg"  --api-key "${{secrets.NUGET_API_KEY}}" --source https://api.nuget.org/v3/index.json

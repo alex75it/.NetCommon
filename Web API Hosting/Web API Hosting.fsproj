@@ -4,6 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Alex75.Common.WebApiHosting</AssemblyName>
     <RootNamespace>WebApi</RootNamespace>
+    <IsPackable>True</IsPackable>
+    <PackageId>Alex75.Common.WebApiHosting</PackageId>
+    <Authors>Alessandro Piccione</Authors>
     
   </PropertyGroup>
 
