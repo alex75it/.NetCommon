@@ -6,7 +6,7 @@ on:
     branches: [ master ]
 
 env:
-  version: "0.1.${{github.run_number}}-alpha"  
+  version: "0.1.${{github.run_number}}"  
 
 jobs:
 
@@ -36,5 +36,6 @@ jobs:
       - name: Web API Hosting
         run: |
           dotnet build "Web API Hosting/Web API Hosting.fsproj" --configuration Release
+          #tests
           dotnet pack "Web API Hosting/Web API Hosting.fsproj" --configuration Release --no-build -p:PackageVersion=$version -p:IncludeSymbols=false
           dotnet nuget push "Web API Hosting/bin/Release/*.nupkg"  --api-key "${{secrets.NUGET_API_KEY}}" --source https://api.nuget.org/v3/index.json
