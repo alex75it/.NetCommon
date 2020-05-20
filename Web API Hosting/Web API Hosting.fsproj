@@ -8,7 +8,7 @@
     <PackageId>Alex75.Common.WebApiHosting</PackageId>    
     <OutputType>Library</OutputType>
     <Authors>Alessandro Piccione</Authors>
-    
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>    
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +19,13 @@
 
   <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="4.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

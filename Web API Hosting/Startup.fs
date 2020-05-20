@@ -4,7 +4,7 @@ open Microsoft.Extensions.DependencyInjection
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 
-type Startup () =
+type private Startup () =
 
     member this.ConfigureServices(services: IServiceCollection) =
         // Add framework services.
