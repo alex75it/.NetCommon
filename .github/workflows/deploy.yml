@@ -38,4 +38,5 @@ jobs:
           dotnet build "Web API Hosting/Web API Hosting.fsproj" --configuration Release
           #tests
           dotnet pack "Web API Hosting/Web API Hosting.fsproj" --configuration Release --no-build -p:PackageVersion=$version -p:IncludeSymbols=false
-          dotnet nuget push "Web API Hosting/bin/Release/*.nupkg"  --api-key "${{secrets.NUGET_API_KEY}}" --source https://api.nuget.org/v3/index.json
+          # due to bug in nuget that is looking for symbols (.snupkg files) use the exact package file name
+          dotnet nuget push "Web API Hosting/bin/Release/Alex75.Common.WebApiHosting.$version.nupkg"  --api-key "${{secrets.NUGET_API_KEY}}" --source https://api.nuget.org/v3/index.json
